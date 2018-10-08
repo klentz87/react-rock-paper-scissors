@@ -37,11 +37,13 @@ class PlayingArena extends Component {
 
 
 	handlePlayerChoice(event) {
-		return event.target.value
+		return event
 	}
 
-  	startTimer() {
-    	this.timerID = setInterval(() => this.tick(), 1000);
+  	startTimer(event) {
+  		let choice = event.target.value
+    	this.timerID = setInterval(() => this.tick(choice), 1000);
+
     	this.setState({
      		displayCount: false
    		});
@@ -51,19 +53,21 @@ class PlayingArena extends Component {
     	clearInterval(this.timerID);
     	this.setState({
       		displayCount: true,
+      		count: 0
       	});
   	}
 
-  	tick() {
-        (this.state.count < 3) ? 
-        	this.setState((prevState, props) => ({ count: prevState.count + 1 })) :		
-        	clearInterval(this.timerID)	
+  	tick(event) {
+  	    if (this.state.count < 3) { 
+        	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
+		} else  {		
+			clearInterval(this.timerID)	
+			this.throwPicks(event);
+	  	}
   	}
 
 
 	throwPicks(event) {
-		this.startTimer();
-
 		var playerPick = this.handlePlayerChoice(event);
 		var computerPick = this.handleComputerChoice();
 		var winner = determineWinner(playerPick, computerPick);
@@ -73,11 +77,13 @@ class PlayingArena extends Component {
 			playerChoice: playerPick,
 			winner: winner
 		});
+
 		this.updateScoreboard(winner);
 	}
 
 	updateScoreboard(winner) {
 		let score = {...this.state.score};
+
 		
 		if (winner === "Player") {
 			score.playerWins = this.state.score.playerWins + 1
@@ -86,6 +92,8 @@ class PlayingArena extends Component {
 			score.computerWins = this.state.score.computerWins + 1
 			this.setState({score})
 		}
+
+// fix below so it works
 /*
 		if (winner === "Player") {
 			this.setState((prevState, props) => ({
@@ -96,15 +104,15 @@ class PlayingArena extends Component {
 				computerWins: prevState.score.computerWins + 1
 			}));
 		}
-*/
+*/		
 	}
 
 	render() {
 		return (
 			<div>
-				<Countdown countdown={this.state.count} />
+				<Countdown countdown={this.state.count}/>
 				<PlayingField playerPick={this.state.playerChoice} computerPick={this.state.computerChoice} winner={this.state.winner} />
-				<PlayerControls onPlayerChoice={this.throwPicks}/>
+				<PlayerControls onPlayerChoice={this.startTimer}/>
 				<Scoreboard score={this.state.score} />
 			</div>
 		)

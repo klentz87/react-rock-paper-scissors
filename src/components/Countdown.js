@@ -16,8 +16,8 @@ class Countdown extends Component {
 	}
 
 /*
-  	startTimer() {
-    	this.timerID = setInterval(() => this.tick(), 1000);
+  	componentDidMount(event) {
+    	this.timerID = setInterval(() => this.props.tick(event), 1000);
     	this.setState({
      		display: false
    		});
@@ -29,7 +29,9 @@ class Countdown extends Component {
       		display: true,
       	});
   	}
+*/    
 
+/*
   	tick() {
         if (this.state.count >= 3) {
         	clearInterval(this.timerID)
@@ -46,11 +48,9 @@ class Countdown extends Component {
 */
 
  	render() {
- 		const display = this.state.display;
     	return (
       		<div>
         		<h1>{this.props.countdown}</h1>
-        		<button onClick={!display ? this.stopTimer : this.startTimer}>{display ? "Start" : "Pause"}</button>
       		</div>
    		);
   	}
