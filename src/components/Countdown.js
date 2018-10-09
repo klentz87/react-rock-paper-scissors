@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import "../css/App.css";
+import "../css/Countdown.css";
 
 class Countdown extends Component {
 	constructor(props) {
@@ -49,7 +51,7 @@ class Countdown extends Component {
 
  	render() {
     	return (
-      		<div>
+      		<div className="playing-field">
         		<h1>{this.props.countdown}</h1>
       		</div>
    		);

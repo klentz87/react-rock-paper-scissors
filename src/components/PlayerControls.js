@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import Button from "./Button"
+import Button from "./Button";
+import "../css/App.css";
+import "../css/PlayerControls.css";
 
 class PlayerControls extends Component {
 	render() {
+
+//		const clickHandler = this.props.displayCount ? null : this.props.onPlayerChoice
+
 		return (
-			<div>	
-				<Button onSubmit={this.props.onPlayerChoice}>Rock</Button>
-				<Button onSubmit={this.props.onPlayerChoice}>Paper</Button>
-				<Button onSubmit={this.props.onPlayerChoice}>Scissors</Button>
+			<div className="btn-group">	
+				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice}>Rock</Button>
+				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice}>Paper</Button>
+				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice}>Scissors</Button>
 			</div>
 		)
 	}

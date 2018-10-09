@@ -18,8 +18,9 @@ class PlayingArena extends Component {
 					playerWins: 0,
 					computerWins: 0
 				   },
-			displayCount: true,
-			count: 0	
+			displayCount: false,
+			count: 1,
+			buttonActive: true
 		}
 
 		this.handlePlayerChoice = this.handlePlayerChoice.bind(this);
@@ -27,14 +28,16 @@ class PlayingArena extends Component {
 		this.throwPicks = this.throwPicks.bind(this);
 		this.updateScoreboard = this.updateScoreboard.bind(this);
 		this.startTimer = this.startTimer.bind(this);
-		this.stopTimer = this.stopTimer.bind(this);
+//		this.stopTimer = this.stopTimer.bind(this);
 		this.tick = this.tick.bind(this);
+		this.click = this.click.bind(this);
+		this.hideCountdown = this.hideCountdown.bind(this);
+		this.enableButton = this.enableButton.bind(this);
 	}
 
 	handleComputerChoice() {
 		return ["Rock","Paper","Scissors"][Math.floor(Math.random() * 3)]
 	}
-
 
 	handlePlayerChoice(event) {
 		return event
@@ -42,13 +45,30 @@ class PlayingArena extends Component {
 
   	startTimer(event) {
   		let choice = event.target.value
-    	this.timerID = setInterval(() => this.tick(choice), 1000);
-
-    	this.setState({
-     		displayCount: false
-   		});
+    	this.timerID = setInterval(() => this.tick(choice), 500);
   	}
-  
+
+  	click(event) {
+  		this.setState({
+  			displayCount: true,
+  			buttonActive: false
+  		});
+  		this.startTimer(event)
+  	}
+
+  	hideCountdown() {
+  		this.setState({ displayCount: false,
+  					   count: 1 })
+  	}
+
+	enableButton() {
+		this.setState({ buttonActive: true })
+	}
+
+	disableButton() {
+		this.setState({ buttonActive: false })
+	}
+/*  
   	stopTimer() {
     	clearInterval(this.timerID);
     	this.setState({
@@ -56,13 +76,16 @@ class PlayingArena extends Component {
       		count: 0
       	});
   	}
-
+*/
   	tick(event) {
   	    if (this.state.count < 3) { 
         	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
 		} else  {		
-			clearInterval(this.timerID)	
+			clearInterval(this.timerID);
+//			this.setState({count: 0})	
+    		this.hideCountdown();
 			this.throwPicks(event);
+			this.enableButton();
 	  	}
   	}
 
@@ -110,9 +133,9 @@ class PlayingArena extends Component {
 	render() {
 		return (
 			<div>
-				<Countdown countdown={this.state.count}/>
-				<PlayingField playerPick={this.state.playerChoice} computerPick={this.state.computerChoice} winner={this.state.winner} />
-				<PlayerControls onPlayerChoice={this.startTimer}/>
+				{this.state.displayCount ? <Countdown countdown={this.state.count}/>: 
+				<PlayingField playerPick={this.state.playerChoice} computerPick={this.state.computerChoice} winner={this.state.winner} />}
+				<PlayerControls onPlayerChoice={this.click} buttonActive={this.state.buttonActive}/>
 				<Scoreboard score={this.state.score} />
 			</div>
 		)
