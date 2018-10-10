@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../css/App.css"
 import "../css/PlayingField.css";
+import PropTypes from "prop-types"
 
 class Results extends Component {
 	render() {					
@@ -26,6 +27,12 @@ class Results extends Component {
 			</div>
 		)
 	}
+}
+
+Results.propTypes = {
+	computerPick: PropTypes.string,
+	playerPick: PropTypes.string,
+	winner: PropTypes.string,
 }
 
 export default Results;

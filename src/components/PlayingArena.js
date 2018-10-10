@@ -66,15 +66,7 @@ class PlayingArena extends Component {
 	disableButton() {
 		this.setState({ buttonActive: false })
 	}
-/*  
-  	stopTimer() {
-    	clearInterval(this.timerID);
-    	this.setState({
-      		displayCount: true,
-      		count: 0
-      	});
-  	}
-*/
+
   	tick(event) {
   	    if (this.state.count < 3) { 
         	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
@@ -113,15 +105,14 @@ class PlayingArena extends Component {
 			this.setState({score})
 		}
 
-// fix below so it works
 /*
 		if (winner === "Player") {
 			this.setState((prevState, props) => ({
-	    		playerWins: prevState.score.playerWins + 1
+	    		score.playerWins: prevState.score.playerWins + 1
 			})); 
 		} else if (winner === "Computer") {
 			this.setState((prevState, props) => ({
-				computerWins: prevState.score.computerWins + 1
+				score.computerWins: prevState.score.computerWins + 1
 			}));
 		}
 */		

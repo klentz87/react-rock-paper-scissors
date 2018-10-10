@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/Button.css";
+import PropTypes from "prop-types"
 
 function Button({children, onSubmit, buttonActive})  {
   return(
@@ -9,6 +10,11 @@ function Button({children, onSubmit, buttonActive})  {
 		</button>
   	</div>
   )
+}
+
+Button.propTypes = {
+	onSubmit: PropTypes.func.isRequired,
+	buttonActive: PropTypes.bool.isRequired
 }
 
 export default Button;

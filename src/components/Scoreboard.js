@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "../css/Scoreboard.css"
+import "../css/Scoreboard.css";
+import PropTypes from "prop-types";
 
 class Scoreboard extends Component {
 	render() {
@@ -24,6 +25,13 @@ class Scoreboard extends Component {
 			</div>
 		)
 	}
+}
+
+Scoreboard.propTypes = {
+	score: PropTypes.object,
+	computerWins: PropTypes.string,
+	playerWins: PropTypes.string,
+	winner: PropTypes.string,
 }
 
 export default Scoreboard;

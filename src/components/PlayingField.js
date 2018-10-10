@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Countdown from "./Countdown";
 import Results from "./Results";
 import PlayerControls from "./PlayerControls";
+import PropTypes from "prop-types";
 
 class PlayingField extends Component {
 	render() {
@@ -18,6 +19,14 @@ class PlayingField extends Component {
 			</div>	
 		)
 	}
+}
+
+PlayingField.propTypes = {
+	displayCount: PropTypes.bool.isRequired,
+	countdown: PropTypes.number,
+	playerPick: PropTypes.string,
+	computerPick: PropTypes.string,
+	winner: PropTypes.string
 }
 
 export default PlayingField

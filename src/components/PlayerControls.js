@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "./Button";
 import "../css/App.css";
 import "../css/PlayerControls.css";
+import PropTypes from "prop-types";
 
 class PlayerControls extends Component {
 	render() {
@@ -16,6 +17,11 @@ class PlayerControls extends Component {
 			</div>
 		)
 	}
+}
+
+PlayerControls.propTypes = {
+	buttonActive: PropTypes.bool.isRequired,
+	onPlayerChoice: PropTypes.func.isRequired
 }
 
 export default PlayerControls;
