@@ -1,22 +1,23 @@
 import React, { Component } from "react";
-import "../css/PlayingField.css"
+import Countdown from "./Countdown";
+import Results from "./Results";
+import PlayerControls from "./PlayerControls";
 
 class PlayingField extends Component {
-	render() {					
-		return (
+	render() {
+		return(
 			<div className="playing-field">
-				<div>
-					{this.props.computerPick}
-				</div>
-				<div>
-					{this.props.winner}
-				</div>
-				<div>
-					{this.props.playerPick}
-				</div>
-			</div>
+				{this.props.displayCount ? 
+				<Countdown countdown={this.props.countdown}/> :
+				<Results 
+					playerPick={this.props.playerPick} 
+					computerPick={this.props.computerPick} 
+					winner={this.props.winner} 
+				/>}
+				<PlayerControls onPlayerChoice={this.props.onPlayerChoice} buttonActive={this.props.buttonActive}/>
+			</div>	
 		)
 	}
 }
 
-export default PlayingField;
+export default PlayingField

@@ -1,0 +1,11 @@
+.scoreboard {
+	float: right;
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+	margin-top: 3rem;
+}
+
+.computer-score {
+	margin-top: 2rem;
+}

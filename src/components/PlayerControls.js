@@ -9,7 +9,7 @@ class PlayerControls extends Component {
 //		const clickHandler = this.props.displayCount ? null : this.props.onPlayerChoice
 
 		return (
-			<div className="btn-group">	
+			<div className="btn-group button-row">	
 				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice}>Rock</Button>
 				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice}>Paper</Button>
 				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice}>Scissors</Button>

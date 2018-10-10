@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import PlayerControls from "./PlayerControls";
 import PlayingField from "./PlayingField";
 import Scoreboard from "./Scoreboard";
-import Countdown from "./Countdown";
+import Title from "./Title"
 
 const determineWinner = require("../utils/determineWinner.js").determineWinner;
 
@@ -28,7 +27,6 @@ class PlayingArena extends Component {
 		this.throwPicks = this.throwPicks.bind(this);
 		this.updateScoreboard = this.updateScoreboard.bind(this);
 		this.startTimer = this.startTimer.bind(this);
-//		this.stopTimer = this.stopTimer.bind(this);
 		this.tick = this.tick.bind(this);
 		this.click = this.click.bind(this);
 		this.hideCountdown = this.hideCountdown.bind(this);
@@ -45,7 +43,7 @@ class PlayingArena extends Component {
 
   	startTimer(event) {
   		let choice = event.target.value
-    	this.timerID = setInterval(() => this.tick(choice), 500);
+    	this.timerID = setInterval(() => this.tick(choice), 400);
   	}
 
   	click(event) {
@@ -82,7 +80,6 @@ class PlayingArena extends Component {
         	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
 		} else  {		
 			clearInterval(this.timerID);
-//			this.setState({count: 0})	
     		this.hideCountdown();
 			this.throwPicks(event);
 			this.enableButton();
@@ -133,9 +130,17 @@ class PlayingArena extends Component {
 	render() {
 		return (
 			<div>
-				{this.state.displayCount ? <Countdown countdown={this.state.count}/>: 
-				<PlayingField playerPick={this.state.playerChoice} computerPick={this.state.computerChoice} winner={this.state.winner} />}
-				<PlayerControls onPlayerChoice={this.click} buttonActive={this.state.buttonActive}/>
+				<Title />
+				<PlayingField 
+					playerPick={this.state.playerChoice} 
+					computerPick={this.state.computerChoice} 
+					winner={this.state.winner} 
+					countdown={this.state.count}
+					onPlayerChoice={this.click} 
+					displayCount={this.state.displayCount} 
+					buttonActive={this.state.buttonActive}
+
+				/>
 				<Scoreboard score={this.state.score} />
 			</div>
 		)
