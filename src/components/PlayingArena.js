@@ -122,17 +122,19 @@ class PlayingArena extends Component {
 		return (
 			<div>
 				<Title />
-				<PlayingField 
-					playerPick={this.state.playerChoice} 
-					computerPick={this.state.computerChoice} 
-					winner={this.state.winner} 
-					countdown={this.state.count}
-					onPlayerChoice={this.click} 
-					displayCount={this.state.displayCount} 
-					buttonActive={this.state.buttonActive}
+				<div className="container-fluid row">
+					<PlayingField 
+						playerPick={this.state.playerChoice} 
+						computerPick={this.state.computerChoice} 
+						winner={this.state.winner} 
+						countdown={this.state.count}
+						onPlayerChoice={this.click} 
+						displayCount={this.state.displayCount} 
+						buttonActive={this.state.buttonActive}
 
-				/>
-				<Scoreboard score={this.state.score} />
+					/>
+					<Scoreboard score={this.state.score} />
+				</div>	
 			</div>
 		)
 	}

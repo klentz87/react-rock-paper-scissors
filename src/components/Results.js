@@ -9,14 +9,14 @@ class Results extends Component {
 
 		if (this.props.winner) {
 			if (this.props.winner === "Draw!") {
-				winnerDisplay = <h1>{this.props.winner}</h1>
+				winnerDisplay = <h1 className="my-4">{this.props.winner}</h1>
 			} else {
-				winnerDisplay = <h1>{this.props.winner} wins!</h1>
+				winnerDisplay = <h1 className="my-4">{this.props.winner} wins!</h1>
 			}
 		} 
 
 		return (
-			<div className="field-display"> {/* see App.css for relevant styling */}
+			<div className="d-flex flex-column align-items-center justify-content-center field-display"> {/* see App.css for relevant styling */}
 				<h2>
 					{this.props.computerPick}
 				</h2>

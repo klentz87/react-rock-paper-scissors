@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 class Scoreboard extends Component {
 	render() {
 		return (
-			<div className="scoreboard">
+			<div className="col-md-3 mt-4 ml-3 scoreboard">
 				<div className="player-score">
 					<h3>
 						Player Wins
@@ -14,7 +14,7 @@ class Scoreboard extends Component {
 						 {this.props.score.playerWins}
 					</h4>
 				</div>	
-				<div className="computer-score">	
+				<div className="mt-4 computer-score">	
 					<h3>
 						Computer Wins
 					</h3>

@@ -7,15 +7,15 @@ import PropTypes from "prop-types";
 class PlayingField extends Component {
 	render() {
 		return(
-			<div className="playing-field">
+			<div className="col-md-8 mt-5 text-center">
 				{this.props.displayCount ? 
-				<Countdown countdown={this.props.countdown}/> :
-				<Results 
-					playerPick={this.props.playerPick} 
-					computerPick={this.props.computerPick} 
-					winner={this.props.winner} 
-				/>}
-				<PlayerControls onPlayerChoice={this.props.onPlayerChoice} buttonActive={this.props.buttonActive}/>
+					<Countdown countdown={this.props.countdown}/> :
+					<Results 
+						playerPick={this.props.playerPick} 
+						computerPick={this.props.computerPick} 
+						winner={this.props.winner} 
+					/>}
+					<PlayerControls onPlayerChoice={this.props.onPlayerChoice} buttonActive={this.props.buttonActive}/>
 			</div>	
 		)
 	}

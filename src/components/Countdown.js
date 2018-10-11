@@ -17,7 +17,7 @@ class Countdown extends Component {
 
  	render() {
     	return (
-      		<div className="field-display">
+      		<div className="d-flex align-items-center justify-content-center field-display">
         		<h1>{this.props.countdown}</h1>
       		</div>
    		);
