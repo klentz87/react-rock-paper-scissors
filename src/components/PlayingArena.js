@@ -26,33 +26,35 @@ class PlayingArena extends Component {
 		this.handleComputerChoice = this.handleComputerChoice.bind(this);
 		this.throwPicks = this.throwPicks.bind(this);
 		this.updateScoreboard = this.updateScoreboard.bind(this);
-		this.startTimer = this.startTimer.bind(this);
-		this.tick = this.tick.bind(this);
-		this.click = this.click.bind(this);
+		this.startGame = this.startGame.bind(this);
+		this.countDown = this.countDown.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 		this.hideCountdown = this.hideCountdown.bind(this);
 		this.enableButton = this.enableButton.bind(this);
 	}
 
 	handleComputerChoice() {
-		return ["Rock","Paper","Scissors"][Math.floor(Math.random() * 3)]
+		return ["Rock","Paper","Scissors"][Math.floor(Math.random() * 3)];
 	}
 
 	handlePlayerChoice(event) {
-		return event
+		return event;
 	}
 
-  	startTimer(event) {
-  		let choice = event.target.value
-    	this.timerID = setInterval(() => this.tick(choice), 400);
-  	}
-
-  	click(event) {
+  	handleClick(event) {
   		this.setState({
   			displayCount: true,
   			buttonActive: false
   		});
-  		this.startTimer(event)
+  		this.startGame(event);
   	}
+
+  	startGame(event) {
+  		const choice = event.target.value;
+    	this.timerID = setInterval(() => this.countDown(choice), 400);
+  	}
+
+
 
   	hideCountdown() {
   		this.setState({ displayCount: false,
@@ -67,7 +69,7 @@ class PlayingArena extends Component {
 		this.setState({ buttonActive: false })
 	}
 
-  	tick(event) {
+  	countDown(event) {
   	    if (this.state.count < 3) { 
         	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
 		} else  {		
@@ -80,9 +82,9 @@ class PlayingArena extends Component {
 
 
 	throwPicks(event) {
-		var playerPick = this.handlePlayerChoice(event);
-		var computerPick = this.handleComputerChoice();
-		var winner = determineWinner(playerPick, computerPick);
+		const playerPick = this.handlePlayerChoice(event);
+		const computerPick = this.handleComputerChoice();
+		const winner = determineWinner(playerPick, computerPick);
 
 		this.setState({
 			computerChoice: computerPick,
@@ -128,7 +130,7 @@ class PlayingArena extends Component {
 						computerPick={this.state.computerChoice} 
 						winner={this.state.winner} 
 						countdown={this.state.count}
-						onPlayerChoice={this.click} 
+						onPlayerChoice={this.handleClick} 
 						displayCount={this.state.displayCount} 
 						buttonActive={this.state.buttonActive}
 

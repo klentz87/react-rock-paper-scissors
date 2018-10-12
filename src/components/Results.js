@@ -9,9 +9,9 @@ class Results extends Component {
 
 		if (this.props.winner) {
 			if (this.props.winner === "Draw!") {
-				winnerDisplay = <h1 className="my-4">{this.props.winner}</h1>
+				winnerDisplay = <h1 className="my-5">{this.props.winner}</h1>
 			} else {
-				winnerDisplay = <h1 className="my-4">{this.props.winner} wins!</h1>
+				winnerDisplay = <h1 className="my-5">{this.props.winner} wins!</h1>
 			}
 		} 
 
