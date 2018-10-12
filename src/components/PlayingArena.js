@@ -17,9 +17,10 @@ class PlayingArena extends Component {
 					playerWins: 0,
 					computerWins: 0
 				   },
-			displayCount: false,
-			count: 1,
-			buttonActive: true
+			count: 1, // app counts down "1,2,3" before throwing picks
+			displayCount: false, // whether to display the countdown, or which picks have been chosen
+			buttonActive: true,
+			finalWinner: ""
 		}
 
 		this.handlePlayerChoice = this.handlePlayerChoice.bind(this);
@@ -31,6 +32,8 @@ class PlayingArena extends Component {
 		this.handleClick = this.handleClick.bind(this);
 		this.hideCountdown = this.hideCountdown.bind(this);
 		this.enableButton = this.enableButton.bind(this);
+		this.determineFinalWinner = this.determineFinalWinner.bind(this);
+		this.handleReset = this.handleReset.bind(this);
 	}
 
 	handleComputerChoice() {
@@ -54,21 +57,6 @@ class PlayingArena extends Component {
     	this.timerID = setInterval(() => this.countDown(choice), 400);
   	}
 
-
-
-  	hideCountdown() {
-  		this.setState({ displayCount: false,
-  					   count: 1 })
-  	}
-
-	enableButton() {
-		this.setState({ buttonActive: true })
-	}
-
-	disableButton() {
-		this.setState({ buttonActive: false })
-	}
-
   	countDown(event) {
   	    if (this.state.count < 3) { 
         	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
@@ -76,10 +64,10 @@ class PlayingArena extends Component {
 			clearInterval(this.timerID);
     		this.hideCountdown();
 			this.throwPicks(event);
-			this.enableButton();
+			this.determineFinalWinner() ? this.disableButton() : this.enableButton();
+
 	  	}
   	}
-
 
 	throwPicks(event) {
 		const playerPick = this.handlePlayerChoice(event);
@@ -95,9 +83,54 @@ class PlayingArena extends Component {
 		this.updateScoreboard(winner);
 	}
 
-	updateScoreboard(winner) {
+	determineFinalWinner() {
 		let score = {...this.state.score};
 
+		if (score.playerWins === 5 || score.computerWins === 5) {
+			if (score.playerWins > score.computerWins) {
+				this.setState({
+					finalWinner: "Player",
+				});
+			} else {
+				this.setState({
+					finalWinner: "Computer",
+				})
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+  	hideCountdown() {
+  		this.setState({ displayCount: false,
+  					   count: 1 })
+  	}
+
+	enableButton() {
+		this.setState({ buttonActive: true })
+	}
+
+	disableButton() {
+		this.setState({ buttonActive: false })
+	}
+
+	handleReset() {
+		this.setState({
+			score: { 
+				playerWins: 0,
+				computerWins: 0
+			},
+			buttonActive: true,
+			winner: "",
+			finalWinner: "",
+			computerChoice: "",
+			playerChoice: "",		
+		})
+	}
+
+	updateScoreboard(winner) {
+		let score = {...this.state.score};
 		
 		if (winner === "Player") {
 			score.playerWins = this.state.score.playerWins + 1
@@ -133,7 +166,8 @@ class PlayingArena extends Component {
 						onPlayerChoice={this.handleClick} 
 						displayCount={this.state.displayCount} 
 						buttonActive={this.state.buttonActive}
-
+						finalWinner={this.state.finalWinner}
+						onReset={this.handleReset}
 					/>
 					<Scoreboard score={this.state.score} />
 				</div>	

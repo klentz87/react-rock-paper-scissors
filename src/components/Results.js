@@ -1,29 +1,43 @@
 import React, { Component } from "react";
-import "../css/App.css"
+import Button from "./Button";
+import "../css/App.css";
 import "../css/PlayingField.css";
 import PropTypes from "prop-types"
 
 class Results extends Component {
 	render() {					
-		let winnerDisplay;
+		let winnerDisplay, computerDisplay, playerDisplay;
 
-		if (this.props.winner) {
-			if (this.props.winner === "Draw!") {
-				winnerDisplay = <h1 className="my-5">{this.props.winner}</h1>
-			} else {
-				winnerDisplay = <h1 className="my-5">{this.props.winner} wins!</h1>
-			}
-		} 
+		if (this.props.finalWinner) {
+			computerDisplay = <h3 className="mb-5">Computer picks {this.props.computerPick}</h3>;
+			playerDisplay = <h3 className="mt-5">Player picks {this.props.playerPick}</h3>;
+			winnerDisplay = (
+				<div>
+					<h1 className="my-3">{this.props.finalWinner} Wins Best of 5!</h1>
+					<h2>Play again?</h2>
+					<Button onSubmit={this.props.onSubmit} buttonActive={this.props.buttonActive}>
+						Reset
+					</Button>
+				</div>
+			)
+		} else {	
+			if (this.props.winner) {
+				computerDisplay = <h3 className="mb-5">Computer picks {this.props.computerPick}</h3>;
+				playerDisplay = <h3 className="mt-5">Player picks {this.props.playerPick}</h3>;
+				if (this.props.winner === "Draw!") {
+					winnerDisplay = <h1 className="my-5">{this.props.winner}</h1>
+				} else {
+					winnerDisplay = <h1 className="my-5">{this.props.winner} wins!</h1>
+				}
+			} 
+		};
+		
 
 		return (
 			<div className="d-flex flex-column align-items-center justify-content-center field-display"> {/* see App.css for relevant styling */}
-				<h2>
-					{this.props.computerPick}
-				</h2>
+					{computerDisplay}
 					{winnerDisplay}
-				<h2>
-					{this.props.playerPick}
-				</h2>
+					{playerDisplay}
 			</div>
 		)
 	}
@@ -33,6 +47,8 @@ Results.propTypes = {
 	computerPick: PropTypes.string,
 	playerPick: PropTypes.string,
 	winner: PropTypes.string,
+	onSubmit: PropTypes.func.isRequired,
+	buttonActive: PropTypes.bool.isRequired
 }
 
 export default Results;
