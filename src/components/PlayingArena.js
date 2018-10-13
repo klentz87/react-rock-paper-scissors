@@ -23,15 +23,14 @@ class PlayingArena extends Component {
 			finalWinner: ""
 		}
 
-		this.handlePlayerChoice = this.handlePlayerChoice.bind(this);
 		this.handleComputerChoice = this.handleComputerChoice.bind(this);
 		this.throwPicks = this.throwPicks.bind(this);
 		this.updateScoreboard = this.updateScoreboard.bind(this);
 		this.startGame = this.startGame.bind(this);
 		this.countDown = this.countDown.bind(this);
 		this.handleClick = this.handleClick.bind(this);
-		this.hideCountdown = this.hideCountdown.bind(this);
 		this.enableButton = this.enableButton.bind(this);
+		this.disableButton = this.disableButton.bind(this);
 		this.determineFinalWinner = this.determineFinalWinner.bind(this);
 		this.handleReset = this.handleReset.bind(this);
 	}
@@ -40,21 +39,23 @@ class PlayingArena extends Component {
 		return ["Rock","Paper","Scissors"][Math.floor(Math.random() * 3)];
 	}
 
+/*
 	handlePlayerChoice(event) {
 		return event;
 	}
+*/
 
   	handleClick(event) {
+  		const choice = event.target.value;
+
   		this.setState({
   			displayCount: true,
   			buttonActive: false
-  		});
-  		this.startGame(event);
-  	}
+  		}, this.startGame(choice))
+  	};
 
   	startGame(event) {
-  		const choice = event.target.value;
-    	this.timerID = setInterval(() => this.countDown(choice), 400);
+    	this.timerID = setInterval(() => this.countDown(event), 400);
   	}
 
   	countDown(event) {
@@ -62,15 +63,15 @@ class PlayingArena extends Component {
         	this.setState((prevState, props) => ({ count: prevState.count + 1 })) 
 		} else  {		
 			clearInterval(this.timerID);
-    		this.hideCountdown();
-			this.throwPicks(event);
+    		this.setState({	displayCount: false,
+    						count: 1 }, 
+    						() => this.throwPicks(event));
 			this.determineFinalWinner() ? this.disableButton() : this.enableButton();
-
 	  	}
   	}
 
 	throwPicks(event) {
-		const playerPick = this.handlePlayerChoice(event);
+		const playerPick = event;
 		const computerPick = this.handleComputerChoice();
 		const winner = determineWinner(playerPick, computerPick);
 
@@ -78,9 +79,9 @@ class PlayingArena extends Component {
 			computerChoice: computerPick,
 			playerChoice: playerPick,
 			winner: winner
-		});
+		}, () => this.updateScoreboard(winner))
 
-		this.updateScoreboard(winner);
+//		this.updateScoreboard(winner);
 	}
 
 	determineFinalWinner() {
@@ -102,11 +103,12 @@ class PlayingArena extends Component {
 		}
 	}
 
+/*
   	hideCountdown() {
   		this.setState({ displayCount: false,
   					   count: 1 })
   	}
-
+*/
 	enableButton() {
 		this.setState({ buttonActive: true })
 	}
