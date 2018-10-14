@@ -24,13 +24,11 @@ class PlayingArena extends Component {
 		}
 
 		this.handleComputerChoice = this.handleComputerChoice.bind(this);
-		this.throwPicks = this.throwPicks.bind(this);
-		this.updateScoreboard = this.updateScoreboard.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 		this.startGame = this.startGame.bind(this);
 		this.countDown = this.countDown.bind(this);
-		this.handleClick = this.handleClick.bind(this);
-		this.enableButton = this.enableButton.bind(this);
-		this.disableButton = this.disableButton.bind(this);
+		this.throwPicks = this.throwPicks.bind(this);
+		this.updateScoreboard = this.updateScoreboard.bind(this);
 		this.determineFinalWinner = this.determineFinalWinner.bind(this);
 		this.handleReset = this.handleReset.bind(this);
 	}
@@ -38,12 +36,6 @@ class PlayingArena extends Component {
 	handleComputerChoice() {
 		return ["Rock","Paper","Scissors"][Math.floor(Math.random() * 3)];
 	}
-
-/*
-	handlePlayerChoice(event) {
-		return event;
-	}
-*/
 
   	handleClick(event) {
   		const choice = event.target.value;
@@ -65,8 +57,9 @@ class PlayingArena extends Component {
 			clearInterval(this.timerID);
     		this.setState({	displayCount: false,
     						count: 1 }, 
-    						() => this.throwPicks(event));
-			this.determineFinalWinner() ? this.disableButton() : this.enableButton();
+    						() => {this.throwPicks(event)}
+    		)				
+		 this.determineFinalWinner() // is calling a function after setting state okay?
 	  	}
   	}
 
@@ -80,8 +73,6 @@ class PlayingArena extends Component {
 			playerChoice: playerPick,
 			winner: winner
 		}, () => this.updateScoreboard(winner))
-
-//		this.updateScoreboard(winner);
 	}
 
 	determineFinalWinner() {
@@ -91,30 +82,20 @@ class PlayingArena extends Component {
 			if (score.playerWins > score.computerWins) {
 				this.setState({
 					finalWinner: "Player",
+					buttonActive: false
 				});
 			} else {
 				this.setState({
 					finalWinner: "Computer",
+					buttonActive: false
 				})
 			}
-			return true;
 		} else {
-			return false;
+			this.setState({
+				buttonActive: true
+			})
+			
 		}
-	}
-
-/*
-  	hideCountdown() {
-  		this.setState({ displayCount: false,
-  					   count: 1 })
-  	}
-*/
-	enableButton() {
-		this.setState({ buttonActive: true })
-	}
-
-	disableButton() {
-		this.setState({ buttonActive: false })
 	}
 
 	handleReset() {
@@ -132,18 +113,24 @@ class PlayingArena extends Component {
 	}
 
 	updateScoreboard(winner) {
-		let score = {...this.state.score};
-		
+		let score = this.state.score;
+
 		if (winner === "Player") {
-			score.playerWins = this.state.score.playerWins + 1
-			this.setState({score})
+			this.setState(prevState => {
+				score.playerWins = prevState.score.playerWins + 1;
+				return score;
+			});
 		} else if (winner === "Computer") {
-			score.computerWins = this.state.score.computerWins + 1
-			this.setState({score})
-		}
+			this.setState((prevState) => {
+				score.computerWins = prevState.score.computerWins + 1;
+				return score;			
+			});
+		} // use prevState, props for this?
+			
 
 /*
 		if (winner === "Player") {
+			
 			this.setState((prevState, props) => ({
 	    		score.playerWins: prevState.score.playerWins + 1
 			})); 
