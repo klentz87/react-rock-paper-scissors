@@ -113,6 +113,22 @@ class PlayingArena extends Component {
 	}
 
 	updateScoreboard(winner) {
+		if (winner === "Player") {
+			this.setState(prevState => ({
+				score: {
+					...prevState.score,
+					playerWins: prevState.score.playerWins + 1
+				}
+			}))
+		} else if (winner === "Computer"){
+			this.setState(prevState => ({
+				score: {
+					...prevState.score,
+					computerWins: prevState.score.computerWins + 1
+				}
+			}))
+		}
+/*
 		let score = this.state.score;
 
 		if (winner === "Player") {
@@ -125,21 +141,8 @@ class PlayingArena extends Component {
 				score.computerWins = prevState.score.computerWins + 1;
 				return score;			
 			});
-		} // use prevState, props for this?
-			
-
-/*
-		if (winner === "Player") {
-			
-			this.setState((prevState, props) => ({
-	    		score.playerWins: prevState.score.playerWins + 1
-			})); 
-		} else if (winner === "Computer") {
-			this.setState((prevState, props) => ({
-				score.computerWins: prevState.score.computerWins + 1
-			}));
-		}
-*/		
+		} 
+*/
 	}
 
 	render() {
