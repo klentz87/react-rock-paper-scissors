@@ -1,0 +1,37 @@
+ul li {
+	display: inline-block;
+
+}
+
+.scoreboard {
+	border: solid black 1px;
+	padding: 2rem;
+	border-bottom: none;
+	margin: 0 auto;
+	background-color: green
+}
+
+.half-circle {
+   	max-width: 30rem;
+    max-height: 15rem; /* as the half of the width */
+    border-top-left-radius: 15rem;
+    border-top-right-radius: 15rem;
+    border: 10px solid gray;
+    border-bottom: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  	.points, .score-label {
+		display: inline;
+		margin-right: .3rem;
+	}
+}
+*/

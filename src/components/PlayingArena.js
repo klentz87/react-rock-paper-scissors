@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PlayingField from "./PlayingField";
 import Scoreboard from "./Scoreboard";
-import Title from "./Title"
+import Title from "./Title";
+import "../css/PlayingArena.css"
 
 const determineWinner = require("../utils/determineWinner.js").determineWinner;
 
@@ -59,7 +60,7 @@ class PlayingArena extends Component {
     						count: 1 }, 
     						() => {this.throwPicks(event)}
     		)				
-		 this.determineFinalWinner() // is calling a function after setting state okay?
+		 this.determineFinalWinner() 
 	  	}
   	}
 
@@ -149,7 +150,9 @@ class PlayingArena extends Component {
 		return (
 			<div>
 				<Title />
-				<div className="container-fluid row">
+				<div className="playing-arena d-flex flex-column pt-5 mb-5">
+					<Scoreboard score={this.state.score} />
+
 					<PlayingField 
 						playerPick={this.state.playerChoice} 
 						computerPick={this.state.computerChoice} 
@@ -161,7 +164,8 @@ class PlayingArena extends Component {
 						finalWinner={this.state.finalWinner}
 						onReset={this.handleReset}
 					/>
-					<Scoreboard score={this.state.score} />
+
+
 				</div>	
 			</div>
 		)
