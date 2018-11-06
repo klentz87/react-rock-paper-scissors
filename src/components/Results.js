@@ -9,11 +9,11 @@ class Results extends Component {
 		let winnerDisplay, computerDisplay, playerDisplay;
 
 		if (this.props.finalWinner) {
-			computerDisplay = <h3 className="mb-5">Computer picks {this.props.computerPick}</h3>;
-			playerDisplay = <h3 className="mt-5">Player picks {this.props.playerPick}</h3>;
+			computerDisplay = <h3>Computer picks {this.props.computerPick}</h3>;
+			playerDisplay = <h3>Player picks {this.props.playerPick}</h3>;
 			winnerDisplay = (
 				<div>
-					<h1 className="my-3">{this.props.finalWinner} Wins Best of 5!</h1>
+					<h1>{this.props.finalWinner} Wins Best of 5!</h1>
 					<h2>Play again?</h2>
 					<Button onSubmit={this.props.onSubmit} buttonActive={this.props.buttonActive}>
 						Reset
@@ -22,22 +22,28 @@ class Results extends Component {
 			)
 		} else {	
 			if (this.props.winner) {
-				computerDisplay = <h3 className="mb-5">Computer picks {this.props.computerPick}</h3>;
-				playerDisplay = <h3 className="mt-5">Player picks {this.props.playerPick}</h3>;
+				computerDisplay = <h3>Computer picks {this.props.computerPick}</h3>;
+				playerDisplay = <h3>Player picks {this.props.playerPick}</h3>;
 				if (this.props.winner === "Draw!") {
-					winnerDisplay = <h1 className="my-5">{this.props.winner}</h1>
+					winnerDisplay = <h1>{this.props.winner}</h1>
 				} else {
-					winnerDisplay = <h1 className="my-5">{this.props.winner} wins!</h1>
+					winnerDisplay = <h1>{this.props.winner} wins!</h1>
 				}
 			} 
 		};
 		
 
 		return (
-			<div className="d-flex flex-column align-items-center justify-content-center field-display"> {/* see App.css for relevant styling */}
-					{computerDisplay}
-					{winnerDisplay}
-					{playerDisplay}
+			<div className="d-flex justify-content-between field-display"> {/* see App.css for relevant styling */}
+					<div className="player-display d-flex align-items-center justify-content-center p-3">
+						{playerDisplay}
+					</div>
+					<div className="center-display d-flex align-items-center">
+						{winnerDisplay}
+					</div>
+					<div className="computer-display d-flex align-items-center justify-content-center p-3">
+						{computerDisplay}
+					</div>
 			</div>
 		)
 	}

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PlayingField from "./PlayingField";
 import Scoreboard from "./Scoreboard";
 import Title from "./Title";
+import NavigationBar from "./NavigationBar";
+import FooterPage from "./FooterPage";
 import "../css/PlayingArena.css"
 
 const determineWinner = require("../utils/determineWinner.js").determineWinner;
@@ -16,7 +18,8 @@ class PlayingArena extends Component {
 			winner: "",
 			score: {
 					playerWins: 0,
-					computerWins: 0
+					computerWins: 0,
+					round: 1
 				   },
 			count: 1, // app counts down "1,2,3" before throwing picks
 			displayCount: false, // whether to display the countdown, or which picks have been chosen
@@ -39,9 +42,8 @@ class PlayingArena extends Component {
 	}
 
   	handleClick(event) {
-  		const choice = event.target.value;
-
-  		this.setState({
+  		const choice = event.currentTarget.id;
+   		this.setState({
   			displayCount: true,
   			buttonActive: false
   		}, this.startGame(choice))
@@ -103,7 +105,8 @@ class PlayingArena extends Component {
 		this.setState({
 			score: { 
 				playerWins: 0,
-				computerWins: 0
+				computerWins: 0,
+				round: 1
 			},
 			buttonActive: true,
 			winner: "",
@@ -118,14 +121,23 @@ class PlayingArena extends Component {
 			this.setState(prevState => ({
 				score: {
 					...prevState.score,
-					playerWins: prevState.score.playerWins + 1
+					playerWins: prevState.score.playerWins + 1,
+					round: prevState.score.round + 1
 				}
 			}))
 		} else if (winner === "Computer"){
 			this.setState(prevState => ({
 				score: {
 					...prevState.score,
-					computerWins: prevState.score.computerWins + 1
+					computerWins: prevState.score.computerWins + 1,
+					round: prevState.score.round + 1
+				}
+			}))
+		} else {
+			this.setState(prevState => ({
+				score: {
+					...prevState.score,
+					round: prevState.score.round + 1
 				}
 			}))
 		}
@@ -149,8 +161,9 @@ class PlayingArena extends Component {
 	render() {
 		return (
 			<div>
+				<NavigationBar />
 				<Title />
-				<div className="playing-arena d-flex flex-column pt-5 mb-5">
+				<div className="playing-arena d-flex flex-column pt-5">
 					<Scoreboard score={this.state.score} />
 
 					<PlayingField 
@@ -164,6 +177,7 @@ class PlayingArena extends Component {
 						finalWinner={this.state.finalWinner}
 						onReset={this.handleReset}
 					/>
+					<FooterPage />
 
 
 				</div>	

@@ -1,0 +1,8 @@
+.jumbotron.jumbotron-black {
+	background-color: rgba(12, 12, 12, 1);
+	border-bottom: solid white 1px
+}
+
+.title h2 {
+	font-size: 4rem;
+}

@@ -1,28 +1,30 @@
-ul li {
-	display: inline-block;
-
-}
-
 .scoreboard {
-	border: solid black 1px;
-	padding: 2rem;
-	border-bottom: none;
-	margin: 0 auto;
-	background-color: green
+  background-color: rgb(252,252,252)
 }
+
+.header {
+  color: gray;
+}
+
+.scoreboard .center-display {
+  padding-left: 3.25rem;
+}
+/*
 
 .half-circle {
-   	max-width: 30rem;
-    max-height: 15rem; /* as the half of the width */
-    border-top-left-radius: 15rem;
-    border-top-right-radius: 15rem;
-    border: 10px solid gray;
-    border-bottom: 0;
+  max-width: 40%;
+  max-height: 15rem; *//* as the half of the width *//*
+  border-top-left-radius: 15rem;
+  border-top-right-radius: 15rem;
+  border: 2px solid white;
+  border-bottom: 0;
 
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
+
 
 /*
 @media only screen 

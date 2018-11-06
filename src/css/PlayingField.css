@@ -1,10 +1,39 @@
+
+
 .playing-field {
 	margin: 0 auto;
 }
 
+/*
 .playing-results {
 	background-color: black;
+}
+*/
+
+.player-display, .computer-display {
+	width: 30%;
+	display: block;
+	background-color: gainsboro
+}
+
+
+
+.player-display {
 	border: solid white 1px;
+}
+
+.computer-display {
+	border: solid white 1px;
+}
+
+
+.center-display {
+	width: 40%;
+
+}
+
+.center-display h1 {
+	margin: 0 auto;
 }
 
 @media only screen 

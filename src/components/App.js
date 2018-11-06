@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import PlayingArena from "./PlayingArena";
 import "../css/App.css"
 

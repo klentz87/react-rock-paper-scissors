@@ -8,8 +8,8 @@ import { Container } from "reactstrap";
 class PlayingField extends Component {
 	render() {
 		return(
-			<div className="playing-field justify-content-center col-lg-8 col-xs-12 text-center">
-				<Container className="playing-results mb-2">
+			<div className="playing-field justify-content-center col-md-8 col-xs-12 text-center px-0">
+				<Container className="playing-results mb-2 px-0">
 					{this.props.displayCount ? 
 						<Countdown countdown={this.props.countdown}/> :
 					<Results 
