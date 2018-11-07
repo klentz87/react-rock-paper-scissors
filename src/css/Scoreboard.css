@@ -6,9 +6,22 @@
   color: gray;
 }
 
-.scoreboard .center-display {
-  padding-left: 3.25rem;
+.scoreboard .round-display {
+  padding-left: 2.5rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .score-display h3 {
+    font-size: 1.25rem;
+  }
+
+
+  .round-display h2 {
+    font-size: 1.75rem;
+  }
+
+}
+
 /*
 
 .half-circle {

@@ -177,10 +177,8 @@ class PlayingArena extends Component {
 						finalWinner={this.state.finalWinner}
 						onReset={this.handleReset}
 					/>
-					<FooterPage />
-
-
 				</div>	
+				<FooterPage />
 			</div>
 		)
 	}

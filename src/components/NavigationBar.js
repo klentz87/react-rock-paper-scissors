@@ -4,6 +4,7 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
+  NavbarNav,
   Nav,
   NavItem,
   NavLink
@@ -34,14 +35,14 @@ class NavigationBar extends React.Component {
 						<NavbarBrand className="brand" style={{cursor:"default"}}><a href="http://www.krislentz.net">Home</a></NavbarBrand>
 						<NavbarToggler onClick={this.toggle} />
 						<Collapse isOpen={this.state.isOpen} navbar>
-							<Nav className="ml-auto" navbar>
+							<NavbarNav className="ml-auto" navbar>
 								<NavItem className="ml-5">
 									<a href="https://www.linkedin.com/in/kris-lentz/">LinkedIn</a>
 								</NavItem>
 								<NavItem className="ml-5">
 									<a href="https://github.com/klentz87">Github</a>
 								</NavItem>
-							</Nav>
+							</NavbarNav>
 						</Collapse>
 					</Navbar>
 				</div>

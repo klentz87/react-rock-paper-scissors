@@ -13,9 +13,9 @@ class PlayerControls extends Component {
 
 		return (
 			<div className="btn-group button-row mt-3">	
-				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Rock"><FontAwesomeIcon icon={faHandRock} /></Button>
-				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Paper"><FontAwesomeIcon icon={faHandPaper} /></Button>
-				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Scissors"><FontAwesomeIcon icon={faHandScissors} /></Button>
+				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Rock"><FontAwesomeIcon className="icon" icon={faHandRock} /></Button>
+				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Paper"><FontAwesomeIcon className="icon" icon={faHandPaper} /></Button>
+				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Scissors"><FontAwesomeIcon className="icon" icon={faHandScissors} /></Button>
 			</div>
 		)
 	}
