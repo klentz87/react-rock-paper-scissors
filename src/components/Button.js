@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Button.css";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 function Button({value, children, onSubmit, buttonActive})  {
   return(

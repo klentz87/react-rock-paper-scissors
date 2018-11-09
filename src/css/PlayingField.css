@@ -1,14 +1,6 @@
-
-
 .playing-field {
 	margin: 0 auto;
 }
-
-/*
-.playing-results {
-	background-color: black;
-}
-*/
 
 .player-display, .computer-display {
 	width: 30%;
@@ -37,22 +29,22 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .player-display h3, .computer-display h3 {
-  	font-size: 1.2rem;
-  }
+	.player-display h3, .computer-display h3 {
+  		font-size: 1.2rem;
+  	}
 
-  .center-display h1 {
-  	font-size: 1.5rem;
-  }
+	.center-display h1 {
+  		font-size: 1.5rem;
+  	}
 
 }
 
 @media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-	.col-xs-12.playing-field {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
+  	and (min-device-width: 320px) 
+  	and (max-device-width: 480px)
+  	and (-webkit-min-device-pixel-ratio: 2) {
+		.col-xs-12.playing-field {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
 }

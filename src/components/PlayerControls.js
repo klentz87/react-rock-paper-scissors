@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Button from "./Button";
 import "../css/App.css";
 import "../css/PlayerControls.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHandRock, faHandPaper, faHandScissors } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHandRock, faHandPaper, faHandScissors } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 
 class PlayerControls extends Component {

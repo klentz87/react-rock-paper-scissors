@@ -4,7 +4,6 @@ import Scoreboard from "./Scoreboard";
 import Title from "./Title";
 import NavigationBar from "./NavigationBar";
 import FooterPage from "./FooterPage";
-import "../css/PlayingArena.css"
 
 const determineWinner = require("../utils/determineWinner.js").determineWinner;
 

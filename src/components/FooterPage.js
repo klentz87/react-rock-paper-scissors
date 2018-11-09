@@ -1,5 +1,5 @@
-import React from 'react';
-import "../css/FooterPage.css"
+import React from "react";
+import "../css/FooterPage.css";
 import { Col, Container, Row } from "mdbreact";
 
 function FooterPage() {
@@ -17,13 +17,16 @@ function FooterPage() {
 		      	<h5 className="title">Other Projects</h5>
 		      	<ul className="pl-0">
 		        	<li className="list-unstyled">
-		          		<a href="http://www.krislentz.net">Home</a>
+		          		<a href="http://www.krislentz.net">Portfolio Page</a>
 		        	</li>
 		        	<li className="list-unstyled">
 		          		<a href="#">React Contact List</a>
 		        	</li>
 		        	<li className="list-unstyled">
-		          		<a href="#!">React Book Cataloger</a>
+		          		<a href="https://react-cataloger3.firebaseapp.com/">React Book Cataloger</a>
+		        	</li>
+		        	<li className="list-unstyled">
+		        		<a href="#">React Microwave App</a>
 		        	</li>
 		      	</ul>
 		      </Col>

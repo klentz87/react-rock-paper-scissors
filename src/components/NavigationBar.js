@@ -8,9 +8,9 @@ import {
   Nav,
   NavItem,
   NavLink
-} from 'mdbreact'; 
+} from "mdbreact"; 
 import "../css/NavigationBar.css";
-import{ BrowserRouter } from "react-router-dom"
+import{ BrowserRouter } from "react-router-dom";
 
 class NavigationBar extends React.Component {
 	constructor(props) {
@@ -35,7 +35,7 @@ class NavigationBar extends React.Component {
 						<NavbarBrand className="brand" style={{cursor:"default"}}><a href="http://www.krislentz.net">Home</a></NavbarBrand>
 						<NavbarToggler onClick={this.toggle} />
 						<Collapse isOpen={this.state.isOpen} navbar>
-							<NavbarNav className="ml-auto" navbar>
+							<NavbarNav right className="" navbar>
 								<NavItem className="ml-5">
 									<a href="https://www.linkedin.com/in/kris-lentz/">LinkedIn</a>
 								</NavItem>

@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import "../css/App.css";
 import "../css/PlayingField.css";
-import "../css/Countdown.css";
-import PropTypes from "prop-types"
-
+import PropTypes from "prop-types";
 
 class Countdown extends Component {
  	render() {
