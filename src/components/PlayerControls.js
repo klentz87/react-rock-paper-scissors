@@ -8,9 +8,6 @@ import PropTypes from "prop-types";
 
 class PlayerControls extends Component {
 	render() {
-
-//		const clickHandler = this.props.displayCount ? null : this.props.onPlayerChoice
-
 		return (
 			<div className="btn-group button-row mt-3">	
 				<Button buttonActive={!this.props.buttonActive} onSubmit={this.props.onPlayerChoice} value="Rock"><FontAwesomeIcon className="icon" icon={faHandRock} /></Button>

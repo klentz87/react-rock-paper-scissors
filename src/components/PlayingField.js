@@ -3,7 +3,7 @@ import Countdown from "./Countdown";
 import Results from "./Results";
 import PlayerControls from "./PlayerControls";
 import PropTypes from "prop-types";
-import { Container } from "reactstrap";
+import { Container } from "mdbreact";
 
 class PlayingField extends Component {
 	render() {

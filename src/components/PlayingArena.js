@@ -140,27 +140,14 @@ class PlayingArena extends Component {
 				}
 			}))
 		}
-/*
-		let score = this.state.score;
-
-		if (winner === "Player") {
-			this.setState(prevState => {
-				score.playerWins = prevState.score.playerWins + 1;
-				return score;
-			});
-		} else if (winner === "Computer") {
-			this.setState((prevState) => {
-				score.computerWins = prevState.score.computerWins + 1;
-				return score;			
-			});
-		} 
-*/
 	}
 
 	render() {
+		const props = this.props
+
 		return (
 			<div>
-				<NavigationBar />
+				<NavigationBar navbar={props ? 1 : 0} />
 				<Title />
 				<div className="playing-arena d-flex flex-column pt-5">
 					<Scoreboard score={this.state.score} />
