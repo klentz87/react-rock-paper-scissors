@@ -20,7 +20,7 @@ function FooterPage() {
 		          		<a href="http://www.krislentz.net">Portfolio Page</a>
 		        	</li>
 		        	<li className="list-unstyled">
-		          		<a href="#">React Contact List</a>
+		          		<a href="https://kris-react-contact-list.herokuapp.com/">React Contact List</a>
 		        	</li>
 		        	<li className="list-unstyled">
 		          		<a href="https://react-cataloger3.firebaseapp.com/">React Book Cataloger</a>
