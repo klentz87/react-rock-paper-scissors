@@ -26,7 +26,7 @@ function FooterPage() {
 		          		<a href="https://react-cataloger3.firebaseapp.com/">React Book Cataloger</a>
 		        	</li>
 		        	<li className="list-unstyled">
-		        		<a href="#">React Microwave App</a>
+		        		<a href="https://react-microwave-converter.herokuapp.com">React Microwave App</a>
 		        	</li>
 		      	</ul>
 		      </Col>
